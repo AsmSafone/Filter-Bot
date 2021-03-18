@@ -28,19 +28,19 @@ from bot.modules.connection import connect_button
 
 PM_START_TEXT = """
 *Hello* *{}*
-*My name is* *{}*\n\n`You Can Add any kind of Filters to This Bot!`
+*My Name is* *{}*!\n\n`A Simple Bot Which is Designed And Build For Adding Filters In Any Groups. You Can Add Any Kind of Filters To This Bot!`
 
-_Click Help button for more details_
+_Click On Help Button For More Details ✌️_
 """
 
 
 HELP_STRINGS = """
-*Hello My name is* *{}*.
+*Hello, My Name is* *{}*!
 *Main Available Commands are Below:*
 
-All of the following commands  / can  be used...
+All of the following commands / can  be used...
 
-And the following:
+Developed By, @I_Am_Only_One_1 🔥
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
 
 
@@ -52,7 +52,7 @@ def vercheck() -> str:
 
 
 SOURCE_STRING = """
-☹️*Sorry Broh*
+*Sorry Broh!! Better Contact My Developer😴*
 """
 
 
@@ -71,7 +71,7 @@ GDPR = []
 
 START_IMG = os.environ.get('START_IMG', None)
 if START_IMG is None:
-    img = "https://telegra.ph/file/fc734b227985a1524e715.jpg"
+    img = "https://telegra.ph/file/a5455c37036b8492eb921.jpg"
 else:
   img = START_IMG    
     
@@ -157,8 +157,8 @@ def start(bot: Bot, update: Update, args: List[str]):
         else:
             send_start(bot, update)
     else:
-        update.effective_message.reply_text("Heya,{} Here..\nHow can I help you? 🙂".format(bot.first_name),reply_markup=InlineKeyboardMarkup(
-                                                [[InlineKeyboardButton(text="⚙️Help",url="t.me/{}?start=help".format(bot.username))]]))
+        update.effective_message.reply_text("Hey,{} Here..\nHow can I help you? 🙂".format(bot.first_name),reply_markup=InlineKeyboardMarkup(
+                                                [[InlineKeyboardButton(text="⚙️ Help ⚙️",url="t.me/{}?start=help".format(bot.username))]]))
 
 def send_start(bot, update):
     #Try to remove old message
@@ -172,8 +172,8 @@ def send_start(bot, update):
     first_name = update.effective_user.first_name 
     text = PM_START_TEXT
 
-    keyboard = [[InlineKeyboardButton(text="⚙️Help",callback_data="help_back"),InlineKeyboardButton(text="Master😴",url="https://t.me/D_ar_k_Angel")]]
-    keyboard += [[InlineKeyboardButton(text="♻️Connect Group", callback_data="main_connect"),InlineKeyboardButton(text="Add Me➕",url="t.me/{}?startgroup=true".format(bot.username))]]
+    keyboard = [[InlineKeyboardButton(text="⚙️ Help",callback_data="help_back"),InlineKeyboardButton(text="Master 🧑‍💻",url="https://t.me/I_Am_Only_One_1")]]
+    keyboard += [[InlineKeyboardButton(text="♻️ Connect", callback_data="main_connect"),InlineKeyboardButton(text="Add Me 💠",url="t.me/{}?startgroup=true".format(bot.username))]]
 
     update.effective_message.reply_photo(img, PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_NAME, OWNER_ID), 
                                          reply_markup=InlineKeyboardMarkup(keyboard), disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
@@ -273,8 +273,8 @@ def get_help(bot: Bot, update: Update):
 
         update.effective_message.reply_text("Contact me in PM to get the list of possible commands.",
                                             reply_markup=InlineKeyboardMarkup(
-                                                [[InlineKeyboardButton(text="⚙️Help",url="t.me/{}?start=help".format(bot.username))],  
-                                                [InlineKeyboardButton(text="😴Contact Creator",url="https://t.me/D_ar_k_Angel")]]))
+                                                [[InlineKeyboardButton(text="⚙️ Help ⚙️",url="t.me/{}?start=help".format(bot.username))],  
+                                                [InlineKeyboardButton(text="🧑‍💻 Developer 🧑‍💻",url="https://t.me/I_Am_Only_One_1")]]))
         return
 
     elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
@@ -395,7 +395,7 @@ def get_settings(bot: Bot, update: Update):
             text = "Click here to get this chat's settings, as well as yours."
             msg.reply_text(text,
                            reply_markup=InlineKeyboardMarkup(
-                               [[InlineKeyboardButton(text="⚙️Settings",
+                               [[InlineKeyboardButton(text="⚙️ Settings ⚙️",
                                                       url="t.me/{}?start=stngs_{}".format(
                                                           bot.username, chat.id))]]))
         else:
@@ -438,9 +438,9 @@ def source(bot: Bot, update: Update):
         try:
             bot.send_message(user.id, SOURCE_STRING, parse_mode=ParseMode.MARKDOWN)
 
-            update.effective_message.reply_text("You'll find in PM more info about my sourcecode.")
+            update.effective_message.reply_text("You'll find it in PM.")
         except Unauthorized:
-            update.effective_message.reply_text("Contact me in PM first to get source information.")
+            update.effective_message.reply_text("Contact me in PM first.")
 
 @run_async
 def imdb_searchdata(bot: Bot, update: Update):
